@@ -1,5 +1,5 @@
 from django.contrib.auth.backends import BaseBackend
-from users.models import User
+from .models import User
 
 
 class OTPBackend(BaseBackend):
