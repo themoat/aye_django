@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>Happenings to be part of:</h1><br>
+
+{% for happening in happenings %}<br><br>
+<article class = "media content-section">
+    <img src="{{happening.photo.url}}" height="600" width="900"/><br>
+    <div class = "media-body">
+        <div class = "article-metadata">
+ <a class = "mr-2" href = "#"> {{ happening.name }}</a>
+            <h3>{{happening.time}}</h3>
+        <h3>  {{ happening.description }} </h3>
+        </div>
+    </div>
+</article>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+

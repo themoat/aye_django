@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>Aloha! {{user.first_name}}</h1><br>
+<h3> Your Clubs:</h3><br><br>
+{% for club in clubs %}<br><br>
+<article class = "media content-section">
+    <img class="rounded-circle article-img" src="{{club.profile_picture.url}}"><br>
+    <div class = "media-body">
+        <div class = "article-metadata">
+ <a class = "mr-2" href = "{{club.name}}"> {{ club.name }}</a>
+        <h3>  {{ club.tagline }} </h3>
+    {{ club.profile_pic }}<br><br>
+        </div>
+    </div>
+</article>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+

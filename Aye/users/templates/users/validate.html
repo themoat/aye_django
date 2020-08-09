@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+<h1> Validate OTP </h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="otp_code" placeholder="Enter your OTP code richie!" required>
+    </div>
+    <form action ="{% url 'validate_otp' %}">
+    <input type="submit" class="btn btn-lg btn-info">Validate OTP</input>
+    </form>
+    <form action ="{% url 'resend' %}">
+    <button type = "submit" class ='btn btn-lg btn-info'>Resend OTP</button>
+    </form>
+</form>
+{% endblock %}
+
