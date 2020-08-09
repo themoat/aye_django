@@ -1,5 +1,6 @@
 # aye_django
 Django app for aye
+The dependencies for the project:
 
 appdirs==1.4.4
 asgiref==3.2.7
