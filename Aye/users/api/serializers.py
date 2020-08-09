@@ -103,52 +103,52 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
 
 """Is this right login serializer, considering where are we taking user's input for otp"""
-class UserLoginSerializer(serializers.ModelSerializer):
+# class UserLoginSerializer(serializers.ModelSerializer):
 
-    # Here we basically try to login the user through phone and OTP, and after entering both, a token is generated
-    #which we finally use to authenticate ourselves.
+#     # Here we basically try to login the user through phone and OTP, and after entering both, a token is generated
+#     #which we finally use to authenticate ourselves.
 
-    #Here we over-ride the fields, since we want them to look and gather data the way we want them to.
+#     #Here we over-ride the fields, since we want them to look and gather data the way we want them to.
 
-    phone = serializers.IntegerField()
-    token = serializers.CharField(max_length = 255,allow_blank=True,read_only=True)
+#     phone = serializers.IntegerField()
+#     token = serializers.CharField(max_length = 255,allow_blank=True,read_only=True)
 
-    class Meta:
-        model = User
-        fields = ('phone','token')
+#     class Meta:
+#         model = User
+#         fields = ('phone','token')
 
-    # According to this above what we wrote in this serializer we try to wrap this up in,a view.
-    # so checkout the UserLoginView.
-    #Now we need to validate this data, as in if this correct or not, so we will do that.
-    #So here I need ot able to do either authenticate the user with their phone and stuff.
-    #So we do that here below.
+#     # According to this above what we wrote in this serializer we try to wrap this up in,a view.
+#     # so checkout the UserLoginView.
+#     #Now we need to validate this data, as in if this correct or not, so we will do that.
+#     #So here I need ot able to do either authenticate the user with their phone and stuff.
+#     #So we do that here below.
 
-    def validate(self, data):
-        user_obj = None
-        phone = data.get('phone', None)
-        #here we see that what's the phone data that user enters.
-        if not phone:
-            raise serializers.ValidationError("Phone number is required to login")
-        #now we filter to find our user objects related for phone
+#     def validate(self, data):
+#         user_obj = None
+#         phone = data.get('phone', None)
+#         #here we see that what's the phone data that user enters.
+#         if not phone:
+#             raise serializers.ValidationError("Phone number is required to login")
+#         #now we filter to find our user objects related for phone
 
-        user = User.objects.get(phone=phone)
+#         user = User.objects.get(phone=phone)
 
-        if user is None:
-            raise serializers.ValidationError(
-                'A user with this phone number is not found.'
-            )
-        if not user.is_active:
-            raise serializers.ValidationError(
-                'This user has been deactivated.'
-            )
+#         if user is None:
+#             raise serializers.ValidationError(
+#                 'A user with this phone number is not found.'
+#             )
+#         if not user.is_active:
+#             raise serializers.ValidationError(
+#                 'This user has been deactivated.'
+#             )
 
-        # if user.exists() and user.count == 1:
-        #     user = user.first()
+#         # if user.exists() and user.count == 1:
+#         #     user = user.first()
 
-        return user and user.username
+#         return user and user.username
 
-        # data['token'] = "SOME RANDOM TOKEN"
-        # return data
+#         # data['token'] = "SOME RANDOM TOKEN"
+#         # return data
 
 
 
