@@ -3,12 +3,12 @@ Django app for aye
 The dependencies for the project:
 Install the latest versions :
 
-appdirs==1.4.4
-asgiref==3.2.7
-attrs==19.3.0
-Automat==20.2.0
-automium==0.2.6
-automium-web==0.1.1
+appdirs==1.4.4                                   
+asgiref==3.2.7      
+attrs==19.3.0     
+Automat==20.2.0    
+automium==0.2.6    
+automium-web==0.1.1  
 Babel==2.8.0
 certifi==2020.6.20
 cffi==1.14.0
