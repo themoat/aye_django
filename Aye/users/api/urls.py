@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserRegistrationView,UserLoginView,UserListView,UserProfileView,LogoutView
+from .views import UserRegistrationView,UserListView,UserProfileView,LogoutView
 from . import views
 
 from rest_framework import routers
