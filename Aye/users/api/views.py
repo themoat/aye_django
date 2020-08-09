@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .serializers import UserRegistrationSerializer,UserLoginSerializer,UserSerializer,UserProfileSerializer
+from .serializers import UserRegistrationSerializer,UserSerializer,UserProfileSerializer
 from ..models import User,Profile,send_otp_via_sms,generate_otp
 from twilio.rest import Client
 
@@ -33,34 +33,34 @@ class UserRegistrationView(CreateAPIView):
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserLoginView(APIView):
+# class UserLoginView(APIView):
 
-    #Since it has been just inheriting from base APIView, we basically have to create our own methods.
-    #And Ofcourse the views are gonna use permissison classes, so we mention that below.
-    #So basically any sort of method, whether it's get, put , post , we have to define it here.
-
-
-    permission_classes = [AllowAny]
-    serializer_class = UserLoginSerializer
-
-    # So i am just defining post method. And remember post method here is not similar to CreateAPIView
-    # since post method is used just once to post something, and nothing gets saved, while this is not the case
-    # with CreateAPIView.
+#     #Since it has been just inheriting from base APIView, we basically have to create our own methods.
+#     #And Ofcourse the views are gonna use permissison classes, so we mention that below.
+#     #So basically any sort of method, whether it's get, put , post , we have to define it here.
 
 
-    #we basically arent saving anything, we just get the data from the respective serializer and do stuff with that.
+#     permission_classes = [AllowAny]
+#     serializer_class = UserLoginSerializer
+
+#     # So i am just defining post method. And remember post method here is not similar to CreateAPIView
+#     # since post method is used just once to post something, and nothing gets saved, while this is not the case
+#     # with CreateAPIView.
 
 
-    def post(self,request,*args,**kwargs):
-        # So we basically get the data in form of request.data just like the way we did with django forms
-        # using request.POST//// We are basically gonna play with serializer data only.
+#     #we basically arent saving anything, we just get the data from the respective serializer and do stuff with that.
 
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            new_data = serializer.data
-            return Response(new_data,status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+#     def post(self,request,*args,**kwargs):
+#         # So we basically get the data in form of request.data just like the way we did with django forms
+#         # using request.POST//// We are basically gonna play with serializer data only.
+
+#         serializer = self.serializer_class(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             new_data = serializer.data
+#             return Response(new_data,status=status.HTTP_200_OK)
+#         else:
+#             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
 
